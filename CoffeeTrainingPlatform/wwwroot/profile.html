@@ -16,6 +16,10 @@
             <p><strong>Имя:</strong> <span id="userName"></span></p>
             <p><strong>Фамилия:</strong> <span id="userSurname"></span></p>
         </div>
+        <div id="progress">
+            <h2>Прогресс по тестам:</h2>
+            <ul id="progressList"></ul>
+        </div>
     </div>
 
     <script>
@@ -26,7 +30,19 @@
             document.getElementById('userRole').innerText = userData.role;
             document.getElementById('userName').innerText = userData.name;
             document.getElementById('userSurname').innerText = userData.surname;
+
+            const progresses = await getData(`api/Progress/getProgress/${userData.id}`);
+            const progressList = document.getElementById('progressList');
+
+            for (const progress of progresses) {
+                const test = await getData(`api/Test/getTest/${progress.testId}`);
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `<strong>${test.name}:</strong> ${progress.progressPercent}%`;
+                progressList.appendChild(listItem);
+            }
+
         });
+
     </script>
 </body>
 </html>

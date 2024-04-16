@@ -7,7 +7,7 @@ body {
 }
 
 .container {
-    max-width: 400px;
+    max-width: 600px;
     margin: 50px auto;
     padding: 20px;
     background-color: #fff;
@@ -21,6 +21,11 @@ h1 {
     margin-bottom: 20px;
 }
 
+h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
 #userData p {
     margin-bottom: 10px;
 }
@@ -28,3 +33,12 @@ h1 {
 #userData strong {
     color: #333;
 }
+
+#progressList {
+    list-style-type: none;
+    padding: 0;
+}
+
+    #progressList li {
+        margin-bottom: 5px;
+    }
