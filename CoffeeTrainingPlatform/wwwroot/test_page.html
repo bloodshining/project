@@ -1,0 +1,90 @@
+﻿    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="TestStyles.css">
+        <script src="DataUtils.js"></script>
+        <title>Тест</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1 id="testName"></h1>
+            <div class="question">
+                <h2 id="questionText"></h2>
+                <div id="answers"></div>
+            </div>
+            <button id="nextQuestion">Ответить</button>
+        </div>
+
+        <script>
+     
+            document.addEventListener("DOMContentLoaded", async function() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const testId = urlParams.get('id');
+
+                // Получаем имя теста и выводим его в заголовок страницы
+                const testData = await getData(`api/Test/getTest/${testId}`);
+                document.getElementById('testName').innerText = testData.name;
+
+                let currentQuestionIndex = 0;
+                let correctAnswersCount = 0;
+                let questions = [];
+
+                // Функция для загрузки вопросов и ответов
+                async function loadQuestionsAndAnswers() {
+                    questions = await getData(`api/Test/getQuestion/${testId}`);
+                    loadQuestion();
+                }
+
+                // Функция для загрузки текущего вопроса
+                async function loadQuestion() {
+                    const currentQuestion = questions[currentQuestionIndex];
+                    document.getElementById('questionText').innerText = currentQuestion.question;
+
+                    // Очищаем блок ответов перед загрузкой новых
+                    const answersContainer = document.getElementById('answers');
+                    answersContainer.innerHTML = '';
+
+                    // Получаем ответы на текущий вопрос и отображаем их
+                    const answers = await getData(`api/Test/getAnswers/${currentQuestion.id}`);
+                    answers.forEach(answer => {
+                        const answerElement = document.createElement('div');
+                        answerElement.classList.add('answer');
+                        answerElement.innerHTML = `
+                            <div class="answer-checkbox"></div>
+                            <span>${answer.answer}</span>
+                        `;
+                        answerElement.addEventListener('click', function() {
+                            if (!this.classList.contains('selected')) {
+                                this.classList.add('selected');
+                                // Проверяем, является ли ответ правильным
+                                if (answer.isCorrect) {
+                                    correctAnswersCount++;
+                                }
+                            }
+                        });
+                        answersContainer.appendChild(answerElement);
+                    });
+                }
+
+                // Обработчик нажатия на кнопку "Ответить"
+                document.getElementById('nextQuestion').addEventListener('click', function() {
+                    // Переходим к следующему вопросу
+                    currentQuestionIndex++;
+                    // Если это был последний вопрос, завершаем тест
+                    if (currentQuestionIndex === questions.length) {
+                        const totalQuestions = questions.length;
+                        const resultUrl = `TestResult.html?totalQuestions=${totalQuestions}&correctAnswers=${correctAnswersCount}&testId=${testId}`;
+                        window.location.href = resultUrl;
+                        return;
+                    }
+                    loadQuestion();
+                });
+
+                // Загрузка вопросов и ответов при загрузке страницы
+                await loadQuestionsAndAnswers();
+            });
+        </script>
+    </body>
+    </html>

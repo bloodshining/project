@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результат теста</title>
+    <link rel="stylesheet" href="ResultStyles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Результат теста</h1>
+        <div id="result"></div>
+        <div id="buttons">
+            <button id="retryTest">Пройти тест заново</button>
+            <button id="returnHome">Вернуться на главную</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const totalQuestions = parseInt(urlParams.get('totalQuestions'));
+            const correctAnswers = parseInt(urlParams.get('correctAnswers'));
+            const testId = parseInt(urlParams.get('testId'));
+
+            const resultText = `Вы ответили правильно на ${correctAnswers} из ${totalQuestions} вопросов.`;
+            document.getElementById('result').innerText = resultText;
+
+            document.getElementById('retryTest').addEventListener('click', function() {
+                // Перенаправляем пользователя на страницу с тестом
+                window.location.href = `test_page.html?id=${testId}`;
+            });
+
+            document.getElementById('returnHome').addEventListener('click', function() {
+                // Перенаправляем пользователя на главную страницу
+                window.location.href = 'mainpage.html';
+            });
+        });
+    </script>
+</body>
+</html>

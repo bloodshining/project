@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тесты для прохождения</title>
+    <link rel="stylesheet" href="MainPageStyles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Тесты для прохождения</h1>
+        <div class="test-container">
+            <div class="test" id="1">Базовый тест</div>
+            <div class="test" id="2">Обучение на бариста</div>
+            <div class="test" id="3">Обучение на менеджера</div>
+            <div class="test" id="4">Обучение на управляющего</div>
+            <div class="test" id="5">Обучение на менеджера по персоналу</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const tests = document.querySelectorAll(".test");
+            tests.forEach(test => {
+                test.addEventListener("click", function() {
+                    const testId = this.id;
+                    window.location.href = `test_page.html?id=${testId}`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
