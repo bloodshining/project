@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using CoffeeLearnWebApi.Models;
+using CoffeeTraining.Models;
 using CoffeeTrainingPlatform.Models;
 
 
-namespace CoffeeLearnWebApi
+namespace CoffeeTraining
 {
     public class CoffeeTrainingPlatformDbContext : DbContext
     {

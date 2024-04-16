@@ -1,4 +1,4 @@
-﻿namespace CoffeeLearnWebApi
+﻿namespace CoffeeTraining
 {
     public class Constants
     {

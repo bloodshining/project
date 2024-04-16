@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using System.Data;
 
-namespace CoffeeLearnWebApi.Models
+namespace CoffeeTraining.Models
 {
     public class Courses
     {

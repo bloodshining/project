@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CoffeeLearnWebApi.Models
+namespace CoffeeTraining.Models
 {
     public class Documents
     {

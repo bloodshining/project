@@ -18,11 +18,15 @@
         </div>
     </div>
 
+    <a href="profile.html">
+        <img src="icons/profileIcon.jpg" alt="Profile Icon" class="profile-icon">
+    </a>
+
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const tests = document.querySelectorAll(".test");
             tests.forEach(test => {
-                test.addEventListener("click", function() {
+                test.addEventListener("click", function () {
                     const testId = this.id;
                     window.location.href = `test_page.html?id=${testId}`;
                 });
@@ -31,3 +35,4 @@
     </script>
 </body>
 </html>
+

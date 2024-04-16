@@ -29,3 +29,14 @@ h1 {
     display: flex;
     align-items: center;
 }
+
+.profile-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px; /* Ширина иконки */
+    height: 40px; /* Высота иконки */
+    border-radius: 50%; /* Для круглой иконки */
+    background-color: #fff; /* Цвет фона иконки */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Тень для иконки */
+}

@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CoffeeTrainingPlatform.Migrations
 {
     [DbContext(typeof(CoffeeTrainingPlatformDbContext))]
-    [Migration("20240416043635_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240416091217_update")]
+    partial class update
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -115,9 +115,6 @@ namespace CoffeeTrainingPlatform.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("StructureId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
 
                     b.ToTable("practiceTests");
@@ -131,14 +128,14 @@ namespace CoffeeTrainingPlatform.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CourseId")
-                        .HasColumnType("integer");
-
                     b.Property<DateTime>("DateDone")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<decimal>("ProgressPercent")
-                        .HasColumnType("numeric");
+                    b.Property<int>("ProgressPercent")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("TestId")
+                        .HasColumnType("integer");
 
                     b.Property<int>("UserId")
                         .HasColumnType("integer");

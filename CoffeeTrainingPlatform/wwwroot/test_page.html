@@ -69,12 +69,13 @@
                 }
 
                 // Обработчик нажатия на кнопку "Ответить"
-                document.getElementById('nextQuestion').addEventListener('click', function() {
+                document.getElementById('nextQuestion').addEventListener('click', async function() {
                     // Переходим к следующему вопросу
                     currentQuestionIndex++;
                     // Если это был последний вопрос, завершаем тест
                     if (currentQuestionIndex === questions.length) {
                         const totalQuestions = questions.length;
+                        await saveProgress(testId, correctAnswersCount, totalQuestions)
                         const resultUrl = `TestResult.html?totalQuestions=${totalQuestions}&correctAnswers=${correctAnswersCount}&testId=${testId}`;
                         window.location.href = resultUrl;
                         return;
@@ -85,6 +86,26 @@
                 // Загрузка вопросов и ответов при загрузке страницы
                 await loadQuestionsAndAnswers();
             });
+
+            async function saveProgress(testId, correctAnswersCount, totalQuestions) {
+                user = await getData(`api/User/GetUser/${sessionStorage.getItem(login)}`)
+                var formData = new FormData();
+                formData.append('TestId', testId)
+                formData.append('UserId', user.id)
+                formData.append('Percent', Math.floor((correctAnswersCount / totalQuestions) * 100))
+                const token = sessionStorage.getItem(tokenKey);
+                const methodResponse = await fetch("api/Progress/upload", {
+                    method: "POST",
+                    headers: {
+                        "Accept": "application/json",
+                        "Authorization": "Bearer " + token
+                    },
+                    body: formData
+                });
+                if (methodResponse.ok === true) {
+                    console.log('Image uploaded successfully. Image ID: ');
+                }
+            }
         </script>
     </body>
     </html>

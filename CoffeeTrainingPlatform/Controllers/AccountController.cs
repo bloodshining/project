@@ -5,7 +5,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 
-namespace CoffeeLearnWebApi.Controllers
+namespace CoffeeTraining.Controllers
 {
     public class AccountController : Controller
     {

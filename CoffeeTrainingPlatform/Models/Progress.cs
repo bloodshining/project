@@ -1,4 +1,4 @@
-﻿namespace CoffeeLearnWebApi.Models
+﻿namespace CoffeeTraining.Models
 {
     public class Progress
     {

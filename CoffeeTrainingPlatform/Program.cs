@@ -1,4 +1,4 @@
-using CoffeeLearnWebApi;
+using CoffeeTraining;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Reflection.Metadata;

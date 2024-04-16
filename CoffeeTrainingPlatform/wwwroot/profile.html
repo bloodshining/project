@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль пользователя</title>
+    <script src="DataUtils.js"></script>
+    <link rel="stylesheet" href="ProfileStyles.css"> <!-- Добавляем ссылку на файл со стилями -->
+</head>
+<body>
+    <div class="container">
+        <h1>Профиль пользователя</h1>
+        <div id="userData">
+            <p><strong>Логин:</strong> <span id="userLogin"></span></p>
+            <p><strong>Роль:</strong> <span id="userRole"></span></p>
+            <p><strong>Имя:</strong> <span id="userName"></span></p>
+            <p><strong>Фамилия:</strong> <span id="userSurname"></span></p>
+        </div>
+    </div>
+
+    <script>
+   
+        document.addEventListener("DOMContentLoaded", async function() {
+            const userData = await getData(`api/User/getUser/${sessionStorage.getItem(login)}`);
+            document.getElementById('userLogin').innerText = userData.login;
+            document.getElementById('userRole').innerText = userData.role;
+            document.getElementById('userName').innerText = userData.name;
+            document.getElementById('userSurname').innerText = userData.surname;
+        });
+    </script>
+</body>
+</html>

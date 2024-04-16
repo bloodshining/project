@@ -1,7 +1,7 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace CoffeeLearnWebApi
+namespace CoffeeTraining
 {
     public class AuthOptions
     {
