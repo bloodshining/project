@@ -11,6 +11,5 @@ namespace CoffeeTraining.Models
         public int IdDocumentResourse { get; set; }
 
         public int DocumentNumber { get; set; }
-        //public User User { get; set; }
     }
 }

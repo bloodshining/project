@@ -3,18 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тесты для прохождения</title>
+    <title>Тесты и Лекции</title>
     <link rel="stylesheet" href="MainPageStyles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Тесты для прохождения</h1>
-        <div class="test-container">
-            <div class="test" id="1">Базовый тест</div>
-            <div class="test" id="2">Обучение на бариста</div>
-            <div class="test" id="3">Обучение на менеджера</div>
-            <div class="test" id="4">Обучение на управляющего</div>
-            <div class="test" id="5">Обучение на менеджера по персоналу</div>
+        <h1>Тесты и Лекции</h1>
+        <div class="content-container">
+            <h2>Тесты</h2>
+            <div class="test-container">
+                <div class="test" id="1">Базовый тест</div>
+                <div class="test" id="2">Обучение на бариста</div>
+                <div class="test" id="3">Обучение на менеджера</div>
+                <div class="test" id="4">Обучение на управляющего</div>
+                <div class="test" id="5">Обучение на менеджера по персоналу</div>
+            </div>
+            <h2>Лекции</h2>
+            <div class="lecture-container">
+                <div class="lecture" id="1">Введение</div>
+                <div class="lecture" id="2">Лекция по обучению на бариста</div>
+                <div class="lecture" id="3">Лекция по обучению на менеджера</div>
+                <div class="lecture" id="4">Лекция по обучению на управляющего</div>
+                <div class="lecture" id="5">Лекция по обучению на менеджера по персоналу</div>
+            </div>
         </div>
     </div>
 
@@ -31,8 +42,17 @@
                     window.location.href = `test_page.html?id=${testId}`;
                 });
             });
+
+            const lectures = document.querySelectorAll(".lecture");
+            lectures.forEach(lecture => {
+                lecture.addEventListener("click", function () {
+                    const lectureId = this.id;
+                    window.location.href = `LectureContent.html?id=${lectureId}`;
+                });
+            });
         });
     </script>
 </body>
 </html>
+
 

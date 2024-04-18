@@ -40,3 +40,15 @@ h1 {
     background-color: #fff; /* Цвет фона иконки */
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Тень для иконки */
 }
+
+.lecture {
+    height: 40px;
+    padding: 10px;
+    border: 2px solid #795548; /* Цвет рамки */
+    border-radius: 5px;
+    background-color: #fff; /* Цвет фона блока с тестом */
+    color: #333; /* Цвет текста */
+    display: flex;
+    align-items: center;
+    margin:7px;
+}

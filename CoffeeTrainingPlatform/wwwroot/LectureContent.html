@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Содержание лекции</title>
+    <link rel="stylesheet" href="LectureStyles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="lectureTitle">Содержание лекции</h1>
+        <div id="lectureContent"></div>
+    </div>
+
+    <script src="DataUtils.js"></script> 
+    <script>
+        async function displayLectureContent() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const lectureId = urlParams.get('id');
+            const lectureData = await getData(`api/Lecture/getLecture/${lectureId}`);
+            document.getElementById('lectureTitle').innerText = lectureData.name;
+            const lectureContent = document.getElementById('lectureContent');
+            lectureContent.innerHTML = lectureData.content;
+        }
+
+        document.addEventListener("DOMContentLoaded", displayLectureContent);
+    </script>
+</body>
+</html>

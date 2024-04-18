@@ -16,7 +16,7 @@ namespace CoffeeTraining
         public DbSet<Lecture> Lecture { get; set; }
         public DbSet<PracticeTest> practiceTests { get; set; } = null!;
 
-        public DbSet<DocumentResourses> DocumentResourses { get; set; } = null!;
+        public DbSet<DocumentContent> DocumentContent { get; set; } = null!;
 
         public DbSet<TestAnswers> TestAnswers { get; set; } = null!;
         public DbSet<TestQuestions> TestQuestions { get; set; } = null!;

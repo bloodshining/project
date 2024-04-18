@@ -1,6 +1,6 @@
 ﻿namespace CoffeeTraining.Models
 {
-    public class CourseStructure
+    public class CourseContent
     {
         public int Id { get; set; }
         public int CourseId {  get; set; }        
